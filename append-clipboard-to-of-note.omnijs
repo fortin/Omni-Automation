@@ -1,0 +1,28 @@
+/*{
+	"type": "action",
+	"targets": ["omnifocus"],
+	"author": "Antonio Fortin",
+	"identifier": "com.fortin.of.append-clipboard-to-note",
+	"version": "1.0",
+	"description": "This action will append the contents of the clipboard to the end of the note of the selected task.",
+	"label": "Append clipboard to Note",
+	"shortLabel": "Clipboard to Note"
+}*/
+(() => {
+	var action = new PlugIn.Action(function(selection, sender) {
+		// action code
+		// selection options: tasks, projects, folders, tags, allObjects
+		var task = selection.tasks[0]
+
+		var textValue = Pasteboard.general.string
+		task.appendStringToNote(textValue)
+	})
+
+	action.validate = function(selection, sender) {
+		// validation code
+		// selection options: tasks, projects, folders, tags, allObjects
+		return (selection.tasks.length === 1)
+	}
+
+	return action;
+})();
