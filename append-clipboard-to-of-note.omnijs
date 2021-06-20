@@ -2,7 +2,7 @@
 	"type": "action",
 	"targets": ["omnifocus"],
 	"author": "Antonio Fortin",
-	"identifier": "com.fortin.of.append-clipboard-to-note",
+	"identifier": "com.fortin.of.clipboard-to-note",
 	"version": "1.0",
 	"description": "This action will append the contents of the clipboard to the end of the note of the selected task.",
 	"label": "Append clipboard to Note",

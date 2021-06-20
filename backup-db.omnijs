@@ -1,0 +1,26 @@
+/*{
+	"type": "action",
+	"targets": ["omnifocus"],
+	"author": "Antonio Fortin",
+	"identifier": "com.fortin.of.backup-db",
+	"version": "1.0",
+	"description": "This action will append the contents of the clipboard to the end of the note of the selected task.",
+	"label": "Backup database",
+	"shortLabel": "Backup database"
+}*/
+(() => {
+	var action = new PlugIn.Action(function(selection, sender) {
+	
+		var fmtr = Formatter.Date.withFormat('eee-MMM-dd-yyyy')
+		var defaultName = "OF Backup " + fmtr.stringFromDate(new Date())
+		var fileTypeID = 'com.omnigroup.omnifocus.filetype.ofocus-backup'
+		var wrapperPromise = document.makeFileWrapper(defaultName, fileTypeID)
+		wrapperPromise.then(wrapper => {
+			var filesaver = new FileSaver()
+			var filetype = new FileType(fileTypeID)
+			filesaver.types = [filetype]
+			filesaver.show(wrapper)
+		
+	})})
+	return action;
+})();
